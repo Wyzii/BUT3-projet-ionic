@@ -1,0 +1,7 @@
+{
+  "name": "BUT3-projet-ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
