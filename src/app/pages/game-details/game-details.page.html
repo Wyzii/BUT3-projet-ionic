@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="game-text">Game</span>
+      <span class="library-text">Library</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="game">
+    <!-- Bannière -->
+    <div class="banner">
+      <img [src]="game.banner" alt="Banner" />
+    </div>
+
+    <!-- Titre -->
+    <h1 class="title">{{ game.name }}</h1>
+
+    <!-- Logo -->
+    <div class="logo-container">
+      <img [src]="game.logo" alt="Logo" />
+    </div>
+
+    <!-- Description -->
+    <p class="description">{{ game.description }}</p>
+
+    <!-- Temps de jeu -->
+    <div class="playtime-container">
+      <ion-icon name="time-outline" class="icon"></ion-icon>
+      <span class="play-time">Temps de jeu :</span>
+      <span class="playtime-value">{{ game.playTime }} heures</span>
+    </div>
+
+    <!-- Catégories -->
+    <div class="categories-container">
+      <p class="categories-label">Catégories :</p>
+      <div class="categories">
+        <ion-chip *ngFor="let category of game.categories" color="primary">
+          <ion-label>{{ category }}</ion-label>
+        </ion-chip>
+      </div>
+    </div>
+  </div>
+
+  <ion-button
+    fill="outline"
+    color="danger"
+    size="small"
+    (click)="confirmDelete()"
+  >
+  <ion-icon name="trash-outline" slot="start"></ion-icon>
+  Supprimer
+  </ion-button>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" [routerLink]="['/game/edit', gameId]">
+      <ion-icon name="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

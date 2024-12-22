@@ -1,0 +1,103 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button color="primary" (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      <span class="game-text">Game</span>
+      <span class="library-text">Library</span>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div style="height: 90vh; overflow-y: auto;">
+<form [formGroup]="gameForm" (ngSubmit)="onSubmit()">
+  <ion-list>
+    <!-- Nom du jeu -->
+    <ion-item>
+      <ion-label position="floating">Nom du jeu</ion-label>
+      <ion-input formControlName="name"></ion-input>
+    </ion-item>
+
+    <!-- Description -->
+    <ion-item>
+      <ion-label position="floating">Description</ion-label>
+      <ion-textarea formControlName="description"></ion-textarea>
+    </ion-item>
+
+    <!-- Temps de jeu -->
+    <ion-item>
+      <ion-label position="floating">Temps de jeu (heures)</ion-label>
+      <ion-input type="number" formControlName="playTime"></ion-input>
+    </ion-item>
+
+    <!-- Logo URL -->
+    <ion-item>
+      <ion-label position="floating">URL du logo</ion-label>
+      <ion-input type="url" formControlName="logo"></ion-input>
+    </ion-item>
+
+    <!-- Bannière URL -->
+    <ion-item>
+      <ion-label position="floating">URL de la bannière</ion-label>
+      <ion-input type="url" formControlName="banner"></ion-input>
+    </ion-item>
+
+    <!-- Catégories -->
+    <ion-item>
+      <ion-label>Catégories</ion-label>
+      <ion-select formControlName="categories" multiple="true">
+        <ion-select-option *ngFor="let category of existingCategories" [value]="category">
+          {{ category }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <div class="ion-padding">
+      <ion-button expand="block" color="primary" (click)="addNewCategoryInput()">
+        + Créer une nouvelle catégorie
+      </ion-button>
+    </div>
+
+    <div class="ion-padding" *ngIf="newCategories.length > 0">
+      <ion-button expand="block" color="danger" (click)="clearAllNewCategories()">
+        Supprimer toutes les nouvelles catégories
+      </ion-button>
+    </div>
+
+    <div *ngFor="let category of newCategories; let i = index; trackBy: trackByIndex" class="new-category">
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="10">
+              <ion-input
+                [(ngModel)]="newCategories[i]"
+                [ngModelOptions]="{standalone: true}"
+                placeholder="Nouvelle catégorie"
+              ></ion-input>
+            </ion-col>
+            <ion-col size="2" class="align-center">
+              <ion-button color="danger" fill="clear" (click)="removeNewCategory(i)">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+  </ion-list>
+
+  <ion-button expand="block" color="tertiary" (click)="scanQRCode()">
+    <ion-icon name="qr-code-outline" slot="start"></ion-icon>
+    Scanner un QR Code
+  </ion-button>
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed" class="submit-fab">
+    <ion-button expand="block" [disabled]="!gameForm.valid" type="submit" color="primary">
+      {{ submitButtonText }}
+    </ion-button>
+  </ion-fab>
+</form>
+</div>

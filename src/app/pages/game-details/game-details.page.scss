@@ -1,0 +1,84 @@
+.banner img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.title {
+    text-align: center;
+    font-size: 2rem;
+    margin: 15px 0;
+    color: var(--ion-text-color, #000);
+}
+
+.game-text {
+    color: var(--ion-text-color, #000);
+}
+
+.library-text {
+    color: #1e90ff;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.logo-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+}
+
+.description {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.playtime-container {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    margin: 20px 10px;
+}
+
+.icon {
+    margin-right: 8px;
+    color: var(--ion-color-primary, #1e90ff);
+}
+
+.playtime-value {
+    font-weight: bold;
+}
+
+.categories-container {
+    margin: 20px 10px;
+}
+
+.categories-label {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+ion-chip {
+    background-color: #1e90ff;
+    color: white;
+    font-size: 0.9rem;
+}
+
+ion-button {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+  

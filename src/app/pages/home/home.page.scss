@@ -1,0 +1,39 @@
+ion-content {
+    --background: #000; // Fond noir
+}
+
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+
+    .game-text {
+        color: var(--ion-text-color, #fff);
+    }
+
+    .library-text {
+        color: #1e90ff;
+    }
+}
+
+p {
+    color: var(--ion-text-color, #fff);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+ion-button {
+    --background: #1e90ff;
+    --color: #000;
+    --border-radius: 10px;
+    font-weight: bold;
+}
+  
